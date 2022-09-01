@@ -1,40 +1,42 @@
-<h1> Profile Editor</h1>
-<h2>{{title}}</h2>
-
-
-<div *ngIf="displayEdit; else else_block" >
-  <p>
-    <label for="name" >Name:</label> <span>{{user.name}}</span>
+<div *ngIf="displayEdit; else else_block">
+  <!--ngModel will allow to edit value which we dont need it here as we just want to display-->
+  <form (ngSubmit)="saveChanges()">
+    <label for="name">Name: </label>
+    <input class="marginName" type="text" name="name" id="name" [(ngModel)] = "formUser.name" >
+    <br>
+    <p>
+    <label for="age" >Age: </label> 
+    <input class="marginAge" type="text" name="age" id="age" [(ngModel)] = "formUser.age" >
+    </p>
+    <label for="favoriteColor" >Favorite Color : </label> 
+    <input class="marginColor" type="text" name="favoriteColor" id="favoriteColor" [(ngModel)] = "formUser.favoriteColor" >
+    <p>
+   <button type="submit">Submit</button>
   </p>
-  <p>
-    <label for="age" >Age:</label> <span>{{user.age}}</span>
-  </p>
-  <p>
-    <label for="favoriteColor" >Favorite Color:</label> <span>{{user.favoriteColor}}</span>
-  </p>
+  </form>
+  <button (click)="toggleEdit()">Toggle Edit</button>
 </div>
 
+
 <ng-template #else_block>
-  <form (ngSubmit) = "saveChanges()">
-<label for="name" >Name:</label>
-<p>
-  <input name="name" id = "name" [(ngModel)]="formUser.name" >
-  <label for="age" >Age:</label>
-</p>
-<p>
-  <input name="age" id = "age" [(ngModel)]="formUser.age" >
-  <label for="favoriteColor"  >Favorite Color:</label>
-</p>
-<p>
-  <input name="favoriteColor" id = "favoriteColor" [(ngModel)]="formUser.favoriteColor" >
+<h1>Profile Editor</h1>
+<h3>User Information:</h3>
 
-</p>
-<button (click)="saveChanges()">Save Changes</button>
+    <table>
+      <tr>
+        <th>Name:</th>
+        <input class="marginName" type="text" name="name" id="name" [(ngModel)] = "user.name" >
+      </tr>
+      <tr>
+        <th>Age:</th>
+        <input class="marginAge" type="text" name="age" id="age" [(ngModel)] = "user.age" >
+      </tr>
+      <tr>
+        <th>Favorite Color:</th>
+        <input class="marginColor" type="text" name="favoriteColor" id="favoriteColor" [(ngModel)] = "user.favoriteColor" >
+      </tr>
+    </table>
 
-</form>
-
-</ng-template>
-<p>
   <button (click)="toggleEdit()">Toggle Edit</button>
-</p>
+  </ng-template>
   

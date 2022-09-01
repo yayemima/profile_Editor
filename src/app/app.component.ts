@@ -1,37 +1,31 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { User } from './interfaces/user';
+ import { User } from './interfaces/user';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Profile Editor';
-
-  formUser: User = {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
+    user: User = {
     name: 'Araya',
-    age:36,
-    favoriteColor: 'White',
-  };
-
-
-  displayEdit: boolean = false;
-  user: any;
-
-  toggleEdit(): void {
-    this.displayEdit = !this.displayEdit;
-    if(this.displayEdit)
-    this.title = 'Update User Information'
-    else
-    this.title = 'User Information'
+    age: 36,
+    favoriteColor: 'White'
   }
 
+formUser:User = {...this.user};
+
+ displayEdit: boolean = false;
+
+ toggleEdit(): void {
+    this.displayEdit = !this.displayEdit;
+ }
+
 saveChanges(): void {
-  this.user.name = this.formUser.name;
-  this.user.age = this.formUser.age;
-  this.user.favoriteColor = this.formUser.favoriteColor;
-  
+  this.user = {...this.formUser};
+  this.displayEdit = false;  
   }
 }

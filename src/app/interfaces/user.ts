@@ -1,5 +1,6 @@
 export interface User {
-  favoriteColor: any;
-  age: any;
-  name: any;
+  name: string,
+  age: number,
+  favoriteColor: string
+
 }
